@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi" class="dark"><head>
+<html lang="vi" class="dark">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">TAMNHACAI - Bio Link</title>
+    <title id="page-title">TAMNHACAI - Bio Link VIP</title>
 
     <!-- Logo Favicon -->
-    <link id="site-favicon" rel="icon" type="image/x-icon" href="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGlyZjJpdGk0cDJvc2xvczU4YjR6YWV3MXR0dW80bWM0cnQzOXcyaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1K8NlomCFNuKcGlHxT/200.webp">
+    <link id="site-favicon" rel="icon" type="image/x-icon" href="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG1sbXlxeGNjbTVvOXFrYjZtemkxenZid2V4M25xOHdhMnA0MHMzYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tcs5XheCK0bKga2o9F/giphy.webp">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,11 +16,10 @@
             theme: {
                 extend: {
                     colors: {
-                        cyberBg: '#080612',
-                        cardBg: 'rgba(23, 17, 43, 0.85)',
-                        cardBorder: '#2e1f54',
+                        cyberBg: '#05030a',
                         neonPurple: '#a855f7',
                         neonPink: '#ec4899',
+                        neonCyan: '#00f0ff',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -30,51 +30,110 @@
     </script>
 
     <!-- Google Font & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #080612;
+            background-color: #05030a;
             background-image: 
-                radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.18) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.12) 0%, transparent 40%),
-                radial-gradient(circle at 0% 50%, rgba(67, 26, 110, 0.25) 0%, transparent 50%);
+                radial-gradient(circle at 50% 0%, rgba(168, 85, 247, 0.25) 0%, transparent 60%),
+                radial-gradient(circle at 100% 100%, rgba(236, 72, 153, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 0% 50%, rgba(0, 240, 255, 0.15) 0%, transparent 50%);
             background-attachment: fixed;
             min-height: 100vh;
             color: #f3f4f6;
+            overflow-x: hidden;
         }
 
+        /* 🫧 Bong bóng long lanh lơ lửng */
+        .bubble-container {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -50px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(236, 72, 153, 0.4) 40%, rgba(168, 85, 247, 0.1) 80%);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 15px rgba(236, 72, 153, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: floatUp 10s infinite linear;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(0.8) rotate(0deg);
+                opacity: 0;
+            }
+            20% { opacity: 0.8; }
+            80% { opacity: 0.8; }
+            100% {
+                transform: translateY(-110vh) scale(1.2) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* ✨ Vật liệu Cyber-Card có viền sáng Neon & Glassmorphism VIP */
         .cyber-card {
-            background: linear-gradient(135deg, rgba(28, 20, 52, 0.85) 0%, rgba(15, 11, 30, 0.95) 100%);
-            border: 1px solid rgba(168, 85, 247, 0.25);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, rgba(30, 20, 58, 0.75) 0%, rgba(12, 8, 26, 0.9) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.35);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(168, 85, 247, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Quệt sáng khi hover (Shimmer) */
+        .cyber-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            transition: 0.6s;
+        }
+
+        .cyber-card:hover::before {
+            left: 100%;
         }
 
         .cyber-card:hover {
-            border-color: rgba(168, 85, 247, 0.7);
-            box-shadow: 0 10px 25px -5px rgba(168, 85, 247, 0.35), 0 0 15px rgba(236, 72, 153, 0.2);
-            transform: translateY(-2px);
+            border-color: rgba(236, 72, 153, 0.8);
+            box-shadow: 0 12px 30px -5px rgba(168, 85, 247, 0.5), 0 0 20px rgba(236, 72, 153, 0.4);
+            transform: translateY(-3px) scale(1.005);
         }
 
+        /* Nút Phát Sáng Neon Rực Rỡ */
         .glow-btn {
-            background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.4);
+            background: linear-gradient(135deg, #a855f7 0%, #ec4899 50%, #00f0ff 100%);
+            background-size: 200% 200%;
+            box-shadow: 0 0 18px rgba(236, 72, 153, 0.5);
             transition: all 0.3s ease;
+            animation: glowGradient 4s ease infinite;
+        }
+
+        @keyframes glowGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .glow-btn:hover {
-            box-shadow: 0 0 25px rgba(236, 72, 153, 0.7);
-            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.8);
+            transform: scale(1.04);
         }
 
         .heart-btn.active i {
             color: #ec4899;
-            filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
+            filter: drop-shadow(0 0 10px rgba(236, 72, 153, 0.9));
         }
 
         /* Tag Style Custom Color */
@@ -86,34 +145,44 @@
         }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #080612; }
+        ::-webkit-scrollbar-track { background: #05030a; }
         ::-webkit-scrollbar-thumb { background: #2e1f54; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+        ::-webkit-scrollbar-thumb:hover { background: #ec4899; }
     </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-1{bottom:-0.25rem}.-right-1{right:-0.25rem}.bottom-5{bottom:1.25rem}.left-3\.5{left:0.875rem}.right-5{right:1.25rem}.top-3{top:0.75rem}.right-4{right:1rem}.top-4{top:1rem}.top-5{top:1.25rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-3{margin-top:0.75rem;margin-bottom:0.75rem}.ml-1{margin-left:0.25rem}.mb-3{margin-bottom:0.75rem}.mb-5{margin-bottom:1.25rem}.mb-1{margin-bottom:0.25rem}.mb-4{margin-bottom:1rem}.mt-2{margin-top:0.5rem}.ml-0\.5{margin-left:0.125rem}.mt-0\.5{margin-top:0.125rem}.mt-1\.5{margin-top:0.375rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.h-11{height:2.75rem}.h-3\.5{height:0.875rem}.h-full{height:100%}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-4{height:1rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-12{height:3rem}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-11{width:2.75rem}.w-3\.5{width:0.875rem}.w-full{width:100%}.w-1{width:0.25rem}.w-3{width:0.75rem}.w-8{width:2rem}.w-10{width:2.5rem}.w-12{width:3rem}.w-9{width:2.25rem}.min-w-0{min-width:0px}.max-w-3xl{max-width:48rem}.max-w-2xl{max-width:42rem}.max-w-\[110px\]{max-width:110px}.max-w-lg{max-width:32rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.translate-y-\[-100px\]{--tw-translate-y:-100px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.875rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-\[14px\]{border-radius:14px}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.rounded{border-radius:0.25rem}.rounded-lg{border-radius:0.5rem}.border{border-width:1px}.border-2{border-width:2px}.border-l{border-left-width:1px}.border-cyberBg{--tw-border-opacity:1;border-color:rgb(8 6 18 / var(--tw-border-opacity, 1))}.border-purple-500\/30{border-color:rgb(168 85 247 / 0.3)}.border-purple-500\/40{border-color:rgb(168 85 247 / 0.4)}.border-pink-500\/50{border-color:rgb(236 72 153 / 0.5)}.border-purple-800\/40{border-color:rgb(107 33 168 / 0.4)}.border-purple-500{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.border-purple-500\/60{border-color:rgb(168 85 247 / 0.6)}.border-purple-800{--tw-border-opacity:1;border-color:rgb(107 33 168 / var(--tw-border-opacity, 1))}.border-purple-800\/60{border-color:rgb(107 33 168 / 0.6)}.border-red-900\/40{border-color:rgb(127 29 29 / 0.4)}.border-purple-800\/50{border-color:rgb(107 33 168 / 0.5)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-purple-950\/60{background-color:rgb(59 7 100 / 0.6)}.bg-purple-950\/80{background-color:rgb(59 7 100 / 0.8)}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-pink-400{--tw-bg-opacity:1;background-color:rgb(244 114 182 / var(--tw-bg-opacity, 1))}.bg-pink-500{--tw-bg-opacity:1;background-color:rgb(236 72 153 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-purple-950\/40{background-color:rgb(59 7 100 / 0.4)}.bg-purple-950\/90{background-color:rgb(59 7 100 / 0.9)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-purple-950{--tw-bg-opacity:1;background-color:rgb(59 7 100 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-purple-300{--tw-gradient-from:#d8b4fe var(--tw-gradient-from-position);--tw-gradient-to:rgb(216 180 254 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-600{--tw-gradient-from:#9333ea var(--tw-gradient-from-position);--tw-gradient-to:rgb(147 51 234 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-950\/60{--tw-gradient-from:rgb(59 7 100 / 0.6) var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 7 100 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-pink-300{--tw-gradient-to:rgb(249 168 212 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #f9a8d4 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-pink-500{--tw-gradient-to:rgb(236 72 153 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #ec4899 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.to-pink-500{--tw-gradient-to:#ec4899 var(--tw-gradient-to-position)}.to-pink-950\/40{--tw-gradient-to:rgb(80 7 36 / 0.4) var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-cover{object-fit:cover}.p-0\.5{padding:0.125rem}.p-1{padding:0.25rem}.p-4{padding:1rem}.p-2{padding:0.5rem}.p-6{padding:1.5rem}.p-1\.5{padding:0.375rem}.p-3\.5{padding:0.875rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.px-4{padding-left:1rem;padding-right:1rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.pb-28{padding-bottom:7rem}.pl-10{padding-left:2.5rem}.pl-3\.5{padding-left:0.875rem}.pr-4{padding-right:1rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.pl-2{padding-left:0.5rem}.text-center{text-align:center}.text-right{text-align:right}.text-\[11px\]{font-size:11px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-\[8px\]{font-size:8px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.font-extrabold{font-weight:800}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wider{letter-spacing:0.05em}.tracking-wide{letter-spacing:0.025em}.text-pink-400{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.text-purple-200{--tw-text-opacity:1;color:rgb(233 213 255 / var(--tw-text-opacity, 1))}.text-purple-300\/70{color:rgb(216 180 254 / 0.7)}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-purple-100{--tw-text-opacity:1;color:rgb(243 232 255 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-300\/50{color:rgb(216 180 254 / 0.5)}.text-purple-400\/60{color:rgb(192 132 252 / 0.6)}.text-purple-500\/30{color:rgb(168 85 247 / 0.3)}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-purple-300\/80{color:rgb(216 180 254 / 0.8)}.placeholder-purple-400\/40::placeholder{color:rgb(192 132 252 / 0.4)}.placeholder-purple-500\/50::placeholder{color:rgb(168 85 247 / 0.5)}.opacity-75{opacity:0.75}.opacity-0{opacity:0}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-purple-500\/30{--tw-shadow-color:rgb(168 85 247 / 0.3);--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-950\/50{--tw-shadow-color:rgb(59 7 100 / 0.5);--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-500\/20{--tw-shadow-color:rgb(168 85 247 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-150{transition-delay:150ms}.delay-75{transition-delay:75ms}.duration-300{transition-duration:300ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-purple-400:hover{--tw-border-opacity:1;border-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-500:hover{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-900:hover{--tw-bg-opacity:1;background-color:rgb(88 28 135 / var(--tw-bg-opacity, 1))}.hover\:bg-red-950\/40:hover{background-color:rgb(69 10 10 / 0.4)}.hover\:bg-purple-800\/40:hover{background-color:rgb(107 33 168 / 0.4)}.hover\:bg-red-950\/50:hover{background-color:rgb(69 10 10 / 0.5)}.hover\:from-purple-500:hover{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-pink-400:hover{--tw-gradient-to:#f472b6 var(--tw-gradient-to-position)}.hover\:text-pink-400:hover{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.hover\:text-red-400:hover{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:text-red-300:hover{--tw-text-opacity:1;color:rgb(252 165 165 / var(--tw-text-opacity, 1))}.focus\:border-purple-500:focus{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.focus\:border-purple-400:focus{--tw-border-opacity:1;border-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-purple-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(168 85 247 / var(--tw-ring-opacity, 1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:h-10{height:2.5rem}.sm\:w-10{width:2.5rem}.sm\:flex-row{flex-direction:row}.sm\:p-6{padding:1.5rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}}</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-1{bottom:-0.25rem}.-right-1{right:-0.25rem}.bottom-5{bottom:1.25rem}.left-3\.5{left:0.875rem}.right-4{right:1rem}.right-5{right:1.25rem}.top-3{top:0.75rem}.top-4{top:1rem}.top-5{top:1.25rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-3{margin-top:0.75rem;margin-bottom:0.75rem}.mb-1{margin-bottom:0.25rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.ml-0\.5{margin-left:0.125rem}.ml-1{margin-left:0.25rem}.mt-0\.5{margin-top:0.125rem}.mt-1\.5{margin-top:0.375rem}.mt-2{margin-top:0.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.h-11{height:2.75rem}.h-12{height:3rem}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1{width:0.25rem}.w-10{width:2.5rem}.w-11{width:2.75rem}.w-12{width:3rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-full{width:100%}.min-w-0{min-width:0px}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-\[110px\]{max-width:110px}.max-w-lg{max-width:32rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.translate-y-\[-100px\]{--tw-translate-y:-100px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.875rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-\[14px\]{border-radius:14px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-l{border-left-width:1px}.border-cyberBg{--tw-border-opacity:1;border-color:rgb(8 6 18 / var(--tw-border-opacity, 1))}.border-pink-500\/50{border-color:rgb(236 72 153 / 0.5)}.border-purple-500{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.border-purple-500\/30{border-color:rgb(168 85 247 / 0.3)}.border-purple-500\/40{border-color:rgb(168 85 247 / 0.4)}.border-purple-500\/60{border-color:rgb(168 85 247 / 0.6)}.border-purple-800{--tw-border-opacity:1;border-color:rgb(107 33 168 / var(--tw-border-opacity, 1))}.border-purple-800\/40{border-color:rgb(107 33 168 / 0.4)}.border-purple-800\/50{border-color:rgb(107 33 168 / 0.5)}.border-purple-800\/60{border-color:rgb(107 33 168 / 0.6)}.border-red-900\/40{border-color:rgb(127 29 29 / 0.4)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-pink-400{--tw-bg-opacity:1;background-color:rgb(244 114 182 / var(--tw-bg-opacity, 1))}.bg-pink-500{--tw-bg-opacity:1;background-color:rgb(236 72 153 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-purple-950{--tw-bg-opacity:1;background-color:rgb(59 7 100 / var(--tw-bg-opacity, 1))}.bg-purple-950\/40{background-color:rgb(59 7 100 / 0.4)}.bg-purple-950\/60{background-color:rgb(59 7 100 / 0.6)}.bg-purple-950\/80{background-color:rgb(59 7 100 / 0.8)}.bg-purple-950\/90{background-color:rgb(59 7 100 / 0.9)}.bg-transparent{background-color:transparent}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-purple-300{--tw-gradient-from:#d8b4fe var(--tw-gradient-from-position);--tw-gradient-to:rgb(216 180 254 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-600{--tw-gradient-from:#9333ea var(--tw-gradient-from-position);--tw-gradient-to:rgb(147 51 234 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-950\/60{--tw-gradient-from:rgb(59 7 100 / 0.6) var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 7 100 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-pink-300{--tw-gradient-to:rgb(249 168 212 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #f9a8d4 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-pink-500{--tw-gradient-to:rgb(236 72 153 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #ec4899 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-pink-500{--tw-gradient-to:#ec4899 var(--tw-gradient-to-position)}.to-pink-950\/40{--tw-gradient-to:rgb(80 7 36 / 0.4) var(--tw-gradient-to-position)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-cover{object-fit:cover}.p-0\.5{padding:0.125rem}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.pb-28{padding-bottom:7rem}.pl-10{padding-left:2.5rem}.pl-2{padding-left:0.5rem}.pl-3\.5{padding-left:0.875rem}.pr-4{padding-right:1rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.text-right{text-align:right}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-pink-400{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.text-purple-100{--tw-text-opacity:1;color:rgb(243 232 255 / var(--tw-text-opacity, 1))}.text-purple-200{--tw-text-opacity:1;color:rgb(233 213 255 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-300\/50{color:rgb(216 180 254 / 0.5)}.text-purple-300\/70{color:rgb(216 180 254 / 0.7)}.text-purple-300\/80{color:rgb(216 180 254 / 0.8)}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-purple-400\/60{color:rgb(192 132 252 / 0.6)}.text-purple-500\/30{color:rgb(168 85 247 / 0.3)}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.placeholder-purple-400\/40::placeholder{color:rgb(192 132 252 / 0.4)}.placeholder-purple-500\/50::placeholder{color:rgb(168 85 247 / 0.5)}.opacity-0{opacity:0}.opacity-75{opacity:0.75}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-purple-500\/20{--tw-shadow-color:rgb(168 85 247 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-500\/30{--tw-shadow-color:rgb(168 85 247 / 0.3);--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-950\/50{--tw-shadow-color:rgb(59 7 100 / 0.5);--tw-shadow:var(--tw-shadow-colored)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-150{transition-delay:150ms}.delay-75{transition-delay:75ms}.duration-300{transition-duration:300ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-purple-400:hover{--tw-border-opacity:1;border-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-500:hover{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-800\/40:hover{background-color:rgb(107 33 168 / 0.4)}.hover\:bg-purple-900:hover{--tw-bg-opacity:1;background-color:rgb(88 28 135 / var(--tw-bg-opacity, 1))}.hover\:bg-red-950\/40:hover{background-color:rgb(69 10 10 / 0.4)}.hover\:bg-red-950\/50:hover{background-color:rgb(69 10 10 / 0.5)}.hover\:from-purple-500:hover{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-pink-400:hover{--tw-gradient-to:#f472b6 var(--tw-gradient-to-position)}.hover\:text-pink-400:hover{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.hover\:text-red-300:hover{--tw-text-opacity:1;color:rgb(252 165 165 / var(--tw-text-opacity, 1))}.hover\:text-red-400:hover{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:border-purple-400:focus{--tw-border-opacity:1;border-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.focus\:border-purple-500:focus{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-purple-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(168 85 247 / var(--tw-ring-opacity, 1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:h-10{height:2.5rem}.sm\:w-10{width:2.5rem}.sm\:flex-row{flex-direction:row}.sm\:p-6{padding:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Inter, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-1{bottom:-0.25rem}.-right-1{right:-0.25rem}.bottom-5{bottom:1.25rem}.left-3\.5{left:0.875rem}.right-5{right:1.25rem}.top-3{top:0.75rem}.right-4{right:1rem}.top-4{top:1rem}.top-5{top:1.25rem}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-3{margin-top:0.75rem;margin-bottom:0.75rem}.mb-3{margin-bottom:0.75rem}.mb-5{margin-bottom:1.25rem}.ml-0\.5{margin-left:0.125rem}.ml-1{margin-left:0.25rem}.mt-0\.5{margin-top:0.125rem}.mt-1\.5{margin-top:0.375rem}.mb-1{margin-bottom:0.25rem}.mb-4{margin-bottom:1rem}.mt-2{margin-top:0.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.hidden{display:none}.h-11{height:2.75rem}.h-12{height:3rem}.h-2{height:0.5rem}.h-3{height:0.75rem}.h-3\.5{height:0.875rem}.h-4{height:1rem}.h-8{height:2rem}.h-9{height:2.25rem}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-1{width:0.25rem}.w-11{width:2.75rem}.w-12{width:3rem}.w-3{width:0.75rem}.w-3\.5{width:0.875rem}.w-8{width:2rem}.w-9{width:2.25rem}.w-full{width:100%}.w-10{width:2.5rem}.min-w-0{min-width:0px}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-\[110px\]{max-width:110px}.max-w-lg{max-width:32rem}.max-w-sm{max-width:24rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.translate-y-\[-100px\]{--tw-translate-y:-100px;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes ping{75%, 100%{transform:scale(2);opacity:0}}.animate-ping{animation:ping 1s cubic-bezier(0, 0, 0.2, 1) infinite}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.875rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.overflow-y-auto{overflow-y:auto}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-\[14px\]{border-radius:14px}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.rounded{border-radius:0.25rem}.border{border-width:1px}.border-2{border-width:2px}.border-l{border-left-width:1px}.border-cyberBg{--tw-border-opacity:1;border-color:rgb(8 6 18 / var(--tw-border-opacity, 1))}.border-pink-500\/50{border-color:rgb(236 72 153 / 0.5)}.border-purple-500\/30{border-color:rgb(168 85 247 / 0.3)}.border-purple-500\/40{border-color:rgb(168 85 247 / 0.4)}.border-purple-800\/40{border-color:rgb(107 33 168 / 0.4)}.border-purple-800\/50{border-color:rgb(107 33 168 / 0.5)}.border-purple-500{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.border-purple-500\/60{border-color:rgb(168 85 247 / 0.6)}.border-purple-800{--tw-border-opacity:1;border-color:rgb(107 33 168 / var(--tw-border-opacity, 1))}.border-purple-800\/60{border-color:rgb(107 33 168 / 0.6)}.border-red-900\/40{border-color:rgb(127 29 29 / 0.4)}.bg-black\/60{background-color:rgb(0 0 0 / 0.6)}.bg-emerald-500{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.bg-emerald-600{--tw-bg-opacity:1;background-color:rgb(5 150 105 / var(--tw-bg-opacity, 1))}.bg-indigo-500{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.bg-indigo-600{--tw-bg-opacity:1;background-color:rgb(79 70 229 / var(--tw-bg-opacity, 1))}.bg-pink-400{--tw-bg-opacity:1;background-color:rgb(244 114 182 / var(--tw-bg-opacity, 1))}.bg-pink-500{--tw-bg-opacity:1;background-color:rgb(236 72 153 / var(--tw-bg-opacity, 1))}.bg-purple-500{--tw-bg-opacity:1;background-color:rgb(168 85 247 / var(--tw-bg-opacity, 1))}.bg-purple-950{--tw-bg-opacity:1;background-color:rgb(59 7 100 / var(--tw-bg-opacity, 1))}.bg-purple-950\/40{background-color:rgb(59 7 100 / 0.4)}.bg-purple-950\/60{background-color:rgb(59 7 100 / 0.6)}.bg-purple-950\/80{background-color:rgb(59 7 100 / 0.8)}.bg-purple-950\/90{background-color:rgb(59 7 100 / 0.9)}.bg-black\/80{background-color:rgb(0 0 0 / 0.8)}.bg-transparent{background-color:transparent}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.bg-gradient-to-tr{background-image:linear-gradient(to top right, var(--tw-gradient-stops))}.from-purple-300{--tw-gradient-from:#d8b4fe var(--tw-gradient-from-position);--tw-gradient-to:rgb(216 180 254 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-600{--tw-gradient-from:#9333ea var(--tw-gradient-from-position);--tw-gradient-to:rgb(147 51 234 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.from-purple-950\/60{--tw-gradient-from:rgb(59 7 100 / 0.6) var(--tw-gradient-from-position);--tw-gradient-to:rgb(59 7 100 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.via-pink-300{--tw-gradient-to:rgb(249 168 212 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #f9a8d4 var(--tw-gradient-via-position), var(--tw-gradient-to)}.via-pink-500{--tw-gradient-to:rgb(236 72 153 / 0)  var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), #ec4899 var(--tw-gradient-via-position), var(--tw-gradient-to)}.to-indigo-500{--tw-gradient-to:#6366f1 var(--tw-gradient-to-position)}.to-pink-500{--tw-gradient-to:#ec4899 var(--tw-gradient-to-position)}.to-pink-950\/40{--tw-gradient-to:rgb(80 7 36 / 0.4) var(--tw-gradient-to-position)}.to-white{--tw-gradient-to:#fff var(--tw-gradient-to-position)}.bg-clip-text{-webkit-background-clip:text;background-clip:text}.object-cover{object-fit:cover}.p-0\.5{padding:0.125rem}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.pb-28{padding-bottom:7rem}.pl-10{padding-left:2.5rem}.pl-2{padding-left:0.5rem}.pl-3\.5{padding-left:0.875rem}.pr-4{padding-right:1rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.text-center{text-align:center}.text-right{text-align:right}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[8px\]{font-size:8px}.text-\[9px\]{font-size:9px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xs{font-size:0.75rem;line-height:1rem}.text-base{font-size:1rem;line-height:1.5rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.text-pink-400{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.text-purple-100{--tw-text-opacity:1;color:rgb(243 232 255 / var(--tw-text-opacity, 1))}.text-purple-200{--tw-text-opacity:1;color:rgb(233 213 255 / var(--tw-text-opacity, 1))}.text-purple-300{--tw-text-opacity:1;color:rgb(216 180 254 / var(--tw-text-opacity, 1))}.text-purple-300\/50{color:rgb(216 180 254 / 0.5)}.text-purple-300\/70{color:rgb(216 180 254 / 0.7)}.text-purple-300\/80{color:rgb(216 180 254 / 0.8)}.text-purple-400{--tw-text-opacity:1;color:rgb(192 132 252 / var(--tw-text-opacity, 1))}.text-purple-400\/60{color:rgb(192 132 252 / 0.6)}.text-purple-500\/30{color:rgb(168 85 247 / 0.3)}.text-red-400{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.text-transparent{color:transparent}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-emerald-400{--tw-text-opacity:1;color:rgb(52 211 153 / var(--tw-text-opacity, 1))}.text-pink-500{--tw-text-opacity:1;color:rgb(236 72 153 / var(--tw-text-opacity, 1))}.placeholder-purple-400\/40::placeholder{color:rgb(192 132 252 / 0.4)}.placeholder-purple-500\/50::placeholder{color:rgb(168 85 247 / 0.5)}.opacity-75{opacity:0.75}.opacity-0{opacity:0}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-purple-500\/20{--tw-shadow-color:rgb(168 85 247 / 0.2);--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-500\/30{--tw-shadow-color:rgb(168 85 247 / 0.3);--tw-shadow:var(--tw-shadow-colored)}.shadow-purple-950\/50{--tw-shadow-color:rgb(59 7 100 / 0.5);--tw-shadow:var(--tw-shadow-colored)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.delay-150{transition-delay:150ms}.delay-75{transition-delay:75ms}.duration-300{transition-duration:300ms}.hover\:scale-105:hover{--tw-scale-x:1.05;--tw-scale-y:1.05;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.hover\:border-purple-400:hover{--tw-border-opacity:1;border-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.hover\:bg-emerald-500:hover{--tw-bg-opacity:1;background-color:rgb(16 185 129 / var(--tw-bg-opacity, 1))}.hover\:bg-indigo-500:hover{--tw-bg-opacity:1;background-color:rgb(99 102 241 / var(--tw-bg-opacity, 1))}.hover\:bg-purple-800\/40:hover{background-color:rgb(107 33 168 / 0.4)}.hover\:bg-red-950\/50:hover{background-color:rgb(69 10 10 / 0.5)}.hover\:bg-purple-900:hover{--tw-bg-opacity:1;background-color:rgb(88 28 135 / var(--tw-bg-opacity, 1))}.hover\:bg-red-950\/40:hover{background-color:rgb(69 10 10 / 0.4)}.hover\:from-purple-500:hover{--tw-gradient-from:#a855f7 var(--tw-gradient-from-position);--tw-gradient-to:rgb(168 85 247 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-pink-400:hover{--tw-gradient-to:#f472b6 var(--tw-gradient-to-position)}.hover\:text-pink-400:hover{--tw-text-opacity:1;color:rgb(244 114 182 / var(--tw-text-opacity, 1))}.hover\:text-red-300:hover{--tw-text-opacity:1;color:rgb(252 165 165 / var(--tw-text-opacity, 1))}.hover\:text-red-400:hover{--tw-text-opacity:1;color:rgb(248 113 113 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.focus\:border-purple-500:focus{--tw-border-opacity:1;border-color:rgb(168 85 247 / var(--tw-border-opacity, 1))}.focus\:border-purple-400:focus{--tw-border-opacity:1;border-color:rgb(192 132 252 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-purple-500:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(168 85 247 / var(--tw-ring-opacity, 1))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:h-10{height:2.5rem}.sm\:w-10{width:2.5rem}.sm\:flex-row{flex-direction:row}.sm\:p-6{padding:1.5rem}.sm\:text-sm{font-size:0.875rem;line-height:1.25rem}.sm\:text-xl{font-size:1.25rem;line-height:1.75rem}}</style></head>
+</head>
 <body class="flex flex-col min-h-screen relative pb-28">
+
+    <!-- 🫧 Hiệu ứng Bong bóng bay lơ lửng -->
+    <div class="bubble-container">
+        <div class="bubble" style="width: 25px; height: 25px; left: 10%; animation-delay: 0s; animation-duration: 8s;"></div>
+        <div class="bubble" style="width: 40px; height: 40px; left: 25%; animation-delay: 2s; animation-duration: 11s;"></div>
+        <div class="bubble" style="width: 18px; height: 18px; left: 45%; animation-delay: 4s; animation-duration: 7s;"></div>
+        <div class="bubble" style="width: 35px; height: 35px; left: 65%; animation-delay: 1s; animation-duration: 10s;"></div>
+        <div class="bubble" style="width: 28px; height: 28px; left: 85%; animation-delay: 3s; animation-duration: 9s;"></div>
+    </div>
 
     <!-- Header / Navigation -->
     <header class="w-full max-w-3xl mx-auto p-4 sm:p-6 flex justify-between items-center z-10">
-        <div class="flex items-center space-x-3">
+        <div class="flex items-center space-x-4">
+            <!-- 📸 Đã phóng to Logo (w-16 h-16) và hiệu ứng Glow viền phát sáng -->
             <div class="relative group cursor-pointer" onclick="editLogoUrl()" title="Bấm để đổi Logo Web (Admin)">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 via-pink-500 to-indigo-500 p-0.5 shadow-lg shadow-purple-500/30 overflow-hidden">
-                    <img id="site-logo" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExbGlyZjJpdGk0cDJvc2xvczU4YjR6YWV3MXR0dW80bWM0cnQzOXcyaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/1K8NlomCFNuKcGlHxT/200.webp" alt="Logo" class="w-full h-full object-cover rounded-[14px]">
+                <div class="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-gradient-to-tr from-purple-600 via-pink-500 to-cyan-400 p-1 shadow-xl shadow-purple-500/40 overflow-hidden ring-2 ring-purple-400/50 hover:ring-pink-400 transition-all">
+                    <img id="site-logo" src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZG1sbXlxeGNjbTVvOXFrYjZtemkxenZid2V4M25xOHdhMnA0MHMzYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/tcs5XheCK0bKga2o9F/giphy.webp" alt="Logo" class="w-full h-full object-cover rounded-[12px]">
                 </div>
-                <span class="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-cyberBg rounded-full"></span>
-                <div id="edit-logo-overlay" class="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center text-xs text-white">
+                <span class="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-400 border-2 border-cyberBg rounded-full shadow-md shadow-emerald-500/80"></span>
+                <div id="edit-logo-overlay" class="absolute inset-0 bg-black/60 rounded-2xl flex items-center justify-center text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity">
                     <i class="fas fa-camera"></i>
                 </div>
             </div>
 
             <div>
                 <div class="flex items-center gap-2">
-                    <h1 id="site-name" class="font-black text-lg sm:text-xl leading-tight tracking-wider bg-gradient-to-r from-purple-300 via-pink-300 to-white bg-clip-text text-transparent">TAMNHACAI</h1>
+                    <h1 id="site-name" class="font-black text-xl sm:text-2xl leading-tight tracking-wider bg-gradient-to-r from-purple-300 via-pink-300 to-cyan-300 bg-clip-text text-transparent filter drop-shadow-[0_2px_8px_rgba(236,72,153,0.3)]">TAMNHACAI</h1>
                     <button id="edit-title-btn" onclick="editSiteInfo()" class="text-xs text-purple-400 hover:text-pink-400 transition-colors" title="Đổi tên trang web">
                         <i class="fas fa-pen"></i>
                     </button>
                 </div>
-                <p id="site-sub" class="text-xs text-purple-300/70 font-medium">Chia sẻ Tool, Mod Game VIP &amp; Free IPA</p>
+                <p id="site-sub" class="text-xs sm:text-sm text-purple-300/80 font-medium tracking-wide">Chia sẻ Tool, Mod Game VIP & Free IPA</p>
             </div>
         </div>
 
@@ -123,10 +192,10 @@
                 <span>Admin Login</span>
             </button>
 
-            <div id="user-info" class="flex items-center gap-2 bg-purple-950/60 border border-purple-500/30 px-3 py-1.5 rounded-xl">
+            <div id="user-info" class="flex items-center gap-2 bg-purple-950/70 border border-purple-500/40 px-3 py-1.5 rounded-xl shadow-lg shadow-purple-900/40 backdrop-blur-md">
                 <div class="flex flex-col text-right">
                     <span class="text-[11px] font-semibold text-purple-200">Tamnhacai</span>
-                    <span class="text-[9px] uppercase font-bold text-pink-400">ADMINISTRATOR</span>
+                    <span class="text-[9px] uppercase font-bold text-pink-400 tracking-wider">ADMINISTRATOR</span>
                 </div>
                 <button onclick="handleLogout()" class="p-1 text-xs text-purple-400 hover:text-red-400 transition-colors ml-1" title="Đăng xuất">
                     <i class="fas fa-power-off"></i>
@@ -136,20 +205,20 @@
     </header>
 
     <!-- Main Container -->
-    <main class="w-full max-w-2xl mx-auto px-4 flex-1 flex flex-col items-center">
+    <main class="w-full max-w-2xl mx-auto px-4 flex-1 flex flex-col items-center z-10">
 
         <!-- Search & Tag Filter Bar -->
         <div class="w-full my-3 flex flex-col sm:flex-row gap-2.5">
             <div class="relative flex-1">
-                <i class="fas fa-search absolute left-3.5 top-3 text-purple-400/60 text-sm"></i>
-                <input type="text" id="search-input" oninput="filterTools()" placeholder="Tìm kiếm tên tool, công năng..." class="w-full pl-10 pr-4 py-2 bg-purple-950/40 border border-purple-800/40 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-purple-500 transition-all text-purple-100 placeholder-purple-400/40">
+                <i class="fas fa-search absolute left-3.5 top-3 text-purple-400/70 text-sm"></i>
+                <input type="text" id="search-input" oninput="filterTools()" placeholder="Tìm kiếm tên tool, công năng..." class="w-full pl-10 pr-4 py-2.5 bg-purple-950/50 border border-purple-800/50 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-pink-500 transition-all text-purple-100 placeholder-purple-400/50 backdrop-blur-md shadow-inner">
             </div>
             
-            <select id="tag-filter" onchange="filterTools()" class="bg-purple-950/60 border border-purple-800/40 text-purple-200 text-xs sm:text-sm rounded-xl px-3 py-2 focus:outline-none focus:border-purple-500 cursor-pointer"><option value="ALL">Tất cả Tags</option><option value="IOS🍏">IOS🍏</option><option value="PC">PC</option><option value="TOOL">TOOL</option><option value="IPA">IPA</option></select>
+            <select id="tag-filter" onchange="filterTools()" class="bg-purple-950/70 border border-purple-800/50 text-purple-200 text-xs sm:text-sm rounded-xl px-3 py-2.5 focus:outline-none focus:border-pink-500 cursor-pointer backdrop-blur-md"><option value="ALL">Tất cả Tags</option><option value="IOS🍏">IOS🍏</option><option value="PC">PC</option><option value="TOOL">TOOL</option><option value="IPA">IPA</option></select>
         </div>
 
         <!-- Admin Control Panel -->
-        <div id="admin-panel" class="w-full mb-5 p-4 rounded-2xl border border-pink-500/50 bg-gradient-to-r from-purple-950/60 to-pink-950/40 backdrop-blur-md flex flex-col sm:flex-row gap-3 justify-between items-center shadow-xl">
+        <div id="admin-panel" class="w-full mb-5 p-4 rounded-2xl border border-pink-500/60 bg-gradient-to-r from-purple-950/80 via-purple-900/60 to-pink-950/60 backdrop-blur-xl flex flex-col sm:flex-row gap-3 justify-between items-center shadow-2xl shadow-purple-950/80">
             <div class="flex items-center gap-2.5">
                 <span class="relative flex h-3 w-3">
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
@@ -162,244 +231,20 @@
             </div>
             
             <div class="flex flex-wrap items-center gap-2">
-                <button onclick="downloadUpdatedHTML()" class="px-3 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl flex items-center gap-1.5 shadow-md transition-all" title="Tải về file index.html mới">
+                <button onclick="downloadUpdatedHTML()" class="px-3.5 py-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl flex items-center gap-1.5 shadow-lg shadow-emerald-600/30 transition-all" title="Tải về file index.html mới">
                     <i class="fas fa-file-download"></i> Xuất index.html
                 </button>
-                <button onclick="copyUpdatedHTML()" class="px-3 py-1.5 text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl flex items-center gap-1.5 shadow-md transition-all" title="Sao chép toàn bộ mã HTML mới">
+                <button onclick="copyUpdatedHTML()" class="px-3.5 py-1.5 text-xs font-bold bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl flex items-center gap-1.5 shadow-lg shadow-indigo-600/30 transition-all" title="Sao chép toàn bộ mã HTML mới">
                     <i class="fas fa-copy"></i> Copy Code
                 </button>
-                <button onclick="openModal()" class="glow-btn px-3.5 py-1.5 text-xs font-extrabold text-white rounded-xl flex items-center gap-1.5">
+                <button onclick="openModal()" class="glow-btn px-4 py-1.5 text-xs font-extrabold text-white rounded-xl flex items-center gap-1.5">
                     <i class="fas fa-plus"></i> Thêm Tool
                 </button>
             </div>
         </div>
 
         <!-- Tool Cards List -->
-        <div id="tools-container" class="w-full space-y-3.5"><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://media1.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3ZHZ3bTZtaHZxY2h3MTI3aWFka3h6MG9kdzh2ZDc4b2pxZHZ1NWMxdCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Z9K0iQ13ufI6HPVTO7/giphy.webp" alt="font chữ hay" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">font chữ hay</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5"></p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #d4ff00;">IOS🍏 <button onclick="openTagColorModal('IOS🍏', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #00fffb;">PC <button onclick="openTagColorModal('PC', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792822396378')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">5</span>
-                        </button>
-                        <a href="https://1024terabox.com/s/1MeYO632347X-18xMvIKVcQ" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792822396378')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792822396378')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://media.tenor.com/Pt2gNenwiiIAAAAM/uwu.gif" alt="Code console auto làm nhiệm vụ discord" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">Code console auto làm nhiệm vụ discord</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">---LƯU Ý: PHẢI SỬ DỤNG DISCORD DESTOP---</p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #00fffb;">PC <button onclick="openTagColorModal('PC', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #002fff;">TOOL <button onclick="openTagColorModal('TOOL', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792758819069')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">10</span>
-                        </button>
-                        <a href="https://1024terabox.com/s/11hzRSzcqkn6engZ4GxHi8Q" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792758819069')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792758819069')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnoac5eTZxzl_cR23ynDvoC6fLDLfZmy8Ett1vp6wJQQ&amp;s=10" alt="messenger vip" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">messenger vip</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">XEM TIN NHẮN ĐÃ BỊ THU HỒI</p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #d4ff00;">IOS🍏 <button onclick="openTagColorModal('IOS🍏', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #81137d;">IPA <button onclick="openTagColorModal('IPA', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792757349049')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">25</span>
-                        </button>
-                        <a href="https://1024terabox.com/s/1IvEY8ZHqxoVGeOlKhNDpdw" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792757349049')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792757349049')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://gifdb.com/images/thumbnail/discord-pfp-logo-tired-cat-9vh3bh1hfgeotscx.gif" alt="discord fake giọng" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">discord fake giọng</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">VÀO CUỘC GỌI RỒI CHỌN GIỌNG</p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #d4ff00;">IOS🍏 <button onclick="openTagColorModal('IOS🍏', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #81137d;">IPA <button onclick="openTagColorModal('IPA', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792753677261')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">11</span>
-                        </button>
-                        <a href="https://1024terabox.com/s/1gV7FMXRqxG6ffIgWIY53Rg" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792753677261')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792753677261')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWoEtojabkvMXr5ayKHcQOOD9ji9KmMbCvbo24Sh3E_g&amp;s=10" alt="CapCut Pro" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">CapCut Pro</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">MỞ KHÓA CÁC TÍNH NĂNG</p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #d4ff00;">IOS🍏 <button onclick="openTagColorModal('IOS🍏', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #81137d;">IPA <button onclick="openTagColorModal('IPA', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792668443619')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">49</span>
-                        </button>
-                        <a href="https://1024terabox.com/s/1-JhMU3cB23nI65IRSTW43w" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792668443619')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792668443619')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://raw.githubusercontent.com/rooootdev/lara/refs/heads/main/lara.png" alt="Lara" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">Lara</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">BỎ GIỚI HẠN SIDESTORE</p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #d4ff00;">IOS🍏 <button onclick="openTagColorModal('IOS🍏', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #81137d;">IPA <button onclick="openTagColorModal('IPA', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792667397611')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">15</span>
-                        </button>
-                        <a href="https://1024terabox.com/s/1_Wq19NrgMbksgOdztyVv5Q" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792667397611')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792667397611')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div><div class="cyber-card rounded-2xl p-3.5 flex items-center justify-between gap-3 relative group">
-                    <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
-                            <img src="https://assets-v2.lottiefiles.com/a/01c56f80-1170-11ee-9ddd-37f4812b7dce/KOnzO40Evm.png" alt="TikTok - Vip" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
-                        </div>
-                        <div class="min-w-0 flex-1">
-                            <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">TikTok - Vip</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">AUTO REP CHUỖI, TẢI VIDEO KHÔNG GIỌT NƯỚC, ....</p>
-                            <div class="flex flex-wrap gap-1 mt-1.5">
-                                <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #d4ff00;">IOS🍏 <button onclick="openTagColorModal('IOS🍏', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span> <span class="custom-tag text-[9px] font-bold px-2 py-0.5 rounded-full shadow-sm" style="background-color: #000000; color: #ffffff; border: 1px solid #81137d;">IPA <button onclick="openTagColorModal('IPA', event)" class="hover:text-white transition-colors ml-0.5 text-[8px]" title="Đổi màu tag này"><i class="fas fa-palette"></i></button></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flex items-center space-x-2">
-                        <button onclick="toggleLike('1792654332157')" class="heart-btn px-2 py-1.5 text-xs text-purple-400 hover:text-pink-400 transition-colors flex flex-col items-center">
-                            <i class="far fa-heart"></i>
-                            <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">84</span>
-                        </button>
-                        <a href="https://yeumoney.com/zY1sBwyeGHcu" target="_blank" rel="noopener noreferrer" class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0" title="Mở Link Tải">
-                            <i class="fas fa-external-link-alt text-xs"></i>
-                        </a>
-                        
-                    <div class="flex items-center gap-1 border-l border-purple-800/50 pl-2 ml-1">
-                        <button onclick="editTool('1792654332157')" class="p-1.5 text-xs text-purple-300 hover:text-white hover:bg-purple-800/40 rounded-lg transition-all" title="Chỉnh sửa">
-                            <i class="fas fa-pen"></i>
-                        </button>
-                        <button onclick="deleteTool('1792654332157')" class="p-1.5 text-xs text-red-400 hover:text-red-300 hover:bg-red-950/50 rounded-lg transition-all" title="Xóa">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                
-                    </div>
-                </div></div>
+        <div id="tools-container" class="w-full space-y-3.5"></div>
 
         <!-- Empty State -->
         <div id="empty-state" class="hidden text-center py-16 text-purple-300/50 text-sm">
@@ -411,18 +256,18 @@
 
     <!-- Audio Player widget -->
     <div class="fixed bottom-5 right-5 z-40">
-        <div class="cyber-card rounded-full p-2 pl-3.5 flex items-center space-x-3 border border-purple-500/40 bg-purple-950/90 shadow-2xl">
+        <div class="cyber-card rounded-full p-2 pl-3.5 flex items-center space-x-3 border border-purple-500/50 bg-purple-950/90 shadow-2xl">
             <div class="flex items-center gap-1">
                 <span class="w-1 h-3 bg-pink-500 animate-pulse"></span>
                 <span class="w-1 h-4 bg-purple-500 animate-pulse delay-75"></span>
-                <span class="w-1 h-2 bg-indigo-500 animate-pulse delay-150"></span>
+                <span class="w-1 h-2 bg-cyan-400 animate-pulse delay-150"></span>
             </div>
             <span class="text-xs font-semibold text-purple-200 max-w-[110px] truncate">Lofi Cyber Music</span>
             <button id="play-btn" onclick="toggleAudio()" class="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-pink-500 text-white flex items-center justify-center transition-all shadow-md hover:scale-105 active:scale-95">
                 <i class="fas fa-play text-xs" id="play-icon"></i>
             </button>
         </div>
-        <audio id="bg-audio" loop="" src="https://stream.zeno.fm/f3wvbbqmdg8uv"></audio>
+        <audio id="bg-audio" loop src="https://stream.zeno.fm/f3wvbbqmdg8uv"></audio>
     </div>
 
     <!-- Login Modal -->
@@ -439,16 +284,16 @@
             <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-purple-300 mb-1">Tài Khoản Admin</label>
-                    <input type="text" id="login-username" required="" placeholder="Nhập tài khoản..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
+                    <input type="text" id="login-username" required placeholder="Nhập tài khoản..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-purple-300 mb-1">Mật Khẩu</label>
-                    <input type="password" id="login-password" required="" placeholder="Nhập mật khẩu..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
+                    <input type="password" id="login-password" required placeholder="Nhập mật khẩu..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <input type="checkbox" id="remember-me" checked="" class="rounded border-purple-800 bg-purple-950 text-pink-500 focus:ring-purple-500">
+                    <input type="checkbox" id="remember-me" checked class="rounded border-purple-800 bg-purple-950 text-pink-500 focus:ring-purple-500">
                     <label for="remember-me" class="text-xs text-purple-300 cursor-pointer">Ghi nhớ đăng nhập</label>
                 </div>
 
@@ -473,22 +318,22 @@
 
                 <div>
                     <label class="block text-xs font-semibold text-purple-300 mb-1">Tên Tool / Ứng Dụng *</label>
-                    <input type="text" id="tool-title" required="" placeholder="VD: CRACK MENU LQ HNMOD VIP" class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
+                    <input type="text" id="tool-title" required placeholder="VD: CRACK MENU LQ HNMOD VIP" class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-purple-300 mb-1">Mô Tả Ngắn *</label>
-                    <input type="text" id="tool-desc" required="" placeholder="VD: MENU ESP, SOI THÔNG TIN TRONG TRẬN..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
+                    <input type="text" id="tool-desc" required placeholder="VD: MENU ESP, SOI THÔNG TIN TRONG TRẬN..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-purple-300 mb-1">Link Ảnh Icon / Thumbnail (URL) *</label>
-                    <input type="url" id="tool-img" required="" placeholder="https://i.imgur.com/example.png" class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
+                    <input type="url" id="tool-img" required placeholder="https://i.imgur.com/example.png" class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
                 </div>
 
                 <div>
                     <label class="block text-xs font-semibold text-purple-300 mb-1">Link Tải Về / Liên Kết *</label>
-                    <input type="url" id="tool-link" required="" placeholder="https://drive.google.com/file/d/..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
+                    <input type="url" id="tool-link" required placeholder="https://drive.google.com/file/d/..." class="w-full px-3.5 py-2.5 bg-purple-950/80 border border-purple-800/60 rounded-xl text-sm focus:outline-none focus:border-purple-400 text-white placeholder-purple-500/50">
                 </div>
 
                 <div>
@@ -564,7 +409,6 @@
         const ADMIN_USER = "Tamnhacai";
         const ADMIN_PASS = "Trum_102";
 
-        // Dữ liệu mặc định
         const defaultTools = [
     {
         "id": "1792822396378",
@@ -652,7 +496,6 @@
     }
 ];
 
-        // Mặc định cài đặt màu sắc của từng Tag
         const defaultTagColors = {
     "IPA": {
         "bg": "#000000",
@@ -687,7 +530,6 @@
             loadToolsData();
             checkAdminSession();
 
-            // Lắng nghe sự kiện đổi màu từ ô Color Picker
             document.getElementById('tag-bg-color').addEventListener('input', (e) => { document.getElementById('tag-bg-text').value = e.target.value; });
             document.getElementById('tag-text-color').addEventListener('input', (e) => { document.getElementById('tag-text-text').value = e.target.value; });
             document.getElementById('tag-border-color').addEventListener('input', (e) => { document.getElementById('tag-border-text').value = e.target.value; });
@@ -700,7 +542,7 @@
 
             if (savedName) {
                 document.getElementById('site-name').textContent = savedName;
-                document.getElementById('page-title').textContent = savedName + ' - Bio Link';
+                document.getElementById('page-title').textContent = savedName + ' - Bio Link VIP';
             }
             if (savedSub) {
                 document.getElementById('site-sub').textContent = savedSub;
@@ -734,7 +576,7 @@
                 const newSub = prompt("Nhập Mô Tả / Slogan Mới:", currentSub);
                 
                 document.getElementById('site-name').textContent = newName.trim();
-                document.getElementById('page-title').textContent = newName.trim() + ' - Bio Link';
+                document.getElementById('page-title').textContent = newName.trim() + ' - Bio Link VIP';
                 localStorage.setItem('nsmod_site_name', newName.trim());
 
                 if (newSub !== null) {
@@ -876,7 +718,7 @@
                 if (tag) {
                     const opt = document.createElement('option');
                     opt.value = tag;
-                    opt.textContent = tag; // Bỏ dấu # ở menu lọc
+                    opt.textContent = tag;
                     tagSelect.appendChild(opt);
                 }
             });
@@ -884,14 +726,12 @@
             tagSelect.value = currentSelected;
         }
 
-        // Lấy style màu cá nhân hóa cho từng tag
         function getTagStyle(tagUpper) {
             const colors = tagColors[tagUpper];
             if (colors) {
-                return `background-color: ${colors.bg}; color: ${colors.text}; border: 1px solid ${colors.border};`;
+                return `background-color: ${colors.bg}; color: ${colors.text}; border: 1px solid ${colors.border}; shadow-sm`;
             }
-            // Style mặc định nếu chưa cài màu
-            return `background-color: rgba(59, 7, 100, 0.8); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3);`;
+            return `background-color: rgba(30, 20, 58, 0.8); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.4);`;
         }
 
         function renderToolsList(toolsList) {
@@ -932,12 +772,12 @@
 
                 card.innerHTML = `
                     <div class="flex items-center space-x-3 min-w-0 flex-1">
-                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/30 shadow-md">
+                        <div class="w-12 h-12 rounded-xl bg-purple-950 overflow-hidden flex-shrink-0 border border-purple-500/40 shadow-md">
                             <img src="${tool.img}" alt="${tool.title}" onerror="this.src='https://placehold.co/100x100/322558/ffffff?text=TOOL'" class="w-full h-full object-cover">
                         </div>
                         <div class="min-w-0 flex-1">
                             <h3 class="font-black text-xs sm:text-sm text-purple-100 truncate tracking-wide uppercase">${tool.title}</h3>
-                            <p class="text-[11px] text-purple-300/70 truncate mt-0.5">${tool.desc}</p>
+                            <p class="text-[11px] text-purple-300/80 truncate mt-0.5">${tool.desc}</p>
                             <div class="flex flex-wrap gap-1 mt-1.5">
                                 ${tagsHtml}
                             </div>
@@ -949,7 +789,7 @@
                             <span class="text-[9px] text-purple-300/80 font-bold mt-0.5">${tool.likes || 0}</span>
                         </button>
                         <a href="${tool.link}" target="_blank" rel="noopener noreferrer" 
-                           class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 to-pink-500 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/20 transform active:scale-95 flex-shrink-0"
+                           class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-purple-600 via-pink-500 to-cyan-400 hover:from-purple-500 hover:to-pink-400 text-white flex items-center justify-center transition-all shadow-lg shadow-purple-500/30 transform active:scale-95 flex-shrink-0"
                            title="Mở Link Tải">
                             <i class="fas fa-external-link-alt text-xs"></i>
                         </a>
@@ -960,7 +800,6 @@
             });
         }
 
-        // HÀM ĐỔI MÀU TAG DÀNH CHO ADMIN
         function openTagColorModal(tagUpper, e) {
             if (e) e.stopPropagation();
             if (!isAdmin) return;
@@ -969,15 +808,15 @@
             document.getElementById('color-target-tag').textContent = tagUpper;
 
             const current = tagColors[tagUpper] || {
-                bg: '#3b0764',
-                text: '#d8b4fe',
+                bg: '#000000',
+                text: '#ffffff',
                 border: '#a855f7'
             };
 
-            document.getElementById('tag-bg-color').value = current.bg.startsWith('#') ? current.bg : '#3b0764';
+            document.getElementById('tag-bg-color').value = current.bg.startsWith('#') ? current.bg : '#000000';
             document.getElementById('tag-bg-text').value = current.bg;
 
-            document.getElementById('tag-text-color').value = current.text.startsWith('#') ? current.text : '#d8b4fe';
+            document.getElementById('tag-text-color').value = current.text.startsWith('#') ? current.text : '#ffffff';
             document.getElementById('tag-text-text').value = current.text;
 
             document.getElementById('tag-border-color').value = current.border.startsWith('#') ? current.border : '#a855f7';
@@ -1000,7 +839,7 @@
 
             tagColors[currentEditingTag] = { bg, text, border };
             saveTagColorsData();
-            filterTools(); // Load lại giao diện, toàn bộ tag cùng tên sẽ đồng bộ màu ngay lập tức
+            filterTools();
             closeTagColorModal();
             showToast(`Đã cập nhật màu đồng bộ cho tag "${currentEditingTag}"!`, "success");
         }
@@ -1033,7 +872,6 @@
             const link = document.getElementById('tool-link').value.trim();
             const rawTags = document.getElementById('tool-tags').value;
             
-            // Tự động bỏ dấu # nếu admin có gõ nhầm dấu #
             const tags = rawTags.split(',').map(t => t.replace('#', '').trim().toUpperCase()).filter(t => t.length > 0);
 
             if (id) {
@@ -1085,7 +923,7 @@
             }
         }
 
-        // HÀM XUẤT FILE ĐẦY ĐỦ CẢ DỮ LIỆU VÀ CÀI ĐẶT MÀU TAG
+        /* 🚀 HÀM XUẤT CODE DÙNG CHUNG CHUẨN XÁC NGUYÊN BẢN CẢ VẬT LIỆU MỚI */
         function generateCurrentFullHTML() {
             let docStr = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
             const toolsJson = JSON.stringify(allTools, null, 4);
@@ -1160,5 +998,5 @@
             }
         }
     </script>
-
-</body></html>
+</body>
+</html>
